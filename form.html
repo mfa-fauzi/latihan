@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta name="google-site-verification" content="google6f8dc19190fa98af.html" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="bootstrap-4.2.1-dist/css/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.2.1-dist/css/bootstrap-grid.css">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.2.1-dist/css/bootstrap-grid.min.css">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.2.1-dist/css/bootstrap-reboot.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="fontawesome-free-5.7.2-web/css/all.css">
+
+    <link rel="stylesheet" href="form.css">
+    <link rel="icon" href="assets/images/logo_kecil.png" type="image/png" sizes="16x16">
+    <title>form</title>
+</head>
+
+<body class="">
+
+    <div class="container" id="content">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <form id="my_form" action="form.php" onsubmit="submitForm(); return false;" method="POST">
+                    <div class="d-flex bd-highlight">
+                        <div class="pr-1 flex-fill bd-highlight">
+                            <input id="n" class="" type="text" name="" required="">
+                            <label>Nama</label>
+                        </div>
+                        <div class="pl-1 flex-fill bd-highlight">
+                            <input id="e" type="email" name="" required="">
+                            <label>Email</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <input id="m" type="text" name="" required="">
+                        <label>Judul</label>
+                    </div>
+                    <div class="">
+                        <textarea rows="10" required=""></textarea>
+                        <label>Pesan</label>
+                    </div>
+                    <input id="myBtn" type="submit" name="submit" value="kirim">
+                    <span id="status"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- js offline -->
+    <script type="text/javascript" src="OwlCarousel2-2.3.4/dist/owl.carousel.js">
+    </script>
+    <script type="text/javascript" src="OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="bootstrap-4.2.1-dist/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="bootstrap-4.2.1-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" href="bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bootstrap-4.2.1-dist/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="style_ani.js"></script> -->
+    <script>
+        AOS.init();
+
+        /*function _(id) { return document.getElementById(id); }
+        function submitForm() {
+            _("mybtn").disabled = true;
+            _("status"), innerHTML = 'please wait....';
+            var formdata = new FormData();
+            formdata.append("n", _("n").value);
+            formdata.append("e", _("e").value);
+            formdata.append("m", _("m").value);
+            var ajax = new XMLHttpRequest();
+            ajax.open("POST", "form.php");
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    _("my_form").innerHTML = '<h2>Thanks' + _("n").value + ', your message sucsses sand.<h2>';
+                } else {
+                    _("status").innerHTML = ajax.responseText;
+                    _("myBtn").disabled = false;
+                }
+            }
+        }
+        ajax.send(formdata)*/
+
+        $('my_form').submit(function (e) {
+    var data;
+
+    data = new FormData();
+    data.append('file', $('#file')[0].files[0]);
+
+    $.ajax({
+        url: 'http://hacheck.tel.fer.hr/xml.pl',
+        data: data,
+        processData: false,
+        type: 'POST',
+
+        // This will override the content type header, 
+        // regardless of whether content is actually sent.
+        // Defaults to 'application/x-www-form-urlencoded'
+        contentType: 'multipart/form-data', 
+
+        //Before 1.5.1 you had to do this:
+        beforeSend: function (x) {
+            if (x && x.overrideMimeType) {
+                x.overrideMimeType("multipart/form-data");
+            }
+        },
+        // Now you should be able to do this:
+        mimeType: 'multipart/form-data',    //Property added in 1.5.1
+
+        success: function (data) {
+            alert(data);
+        }
+    });
+
+    e.preventDefault();
+});
+
+        /*function AJAXrequest(url,postData,callback){
+            $.ajax() ({
+                type: 'POST',
+                url: 'url',
+                data: postData,
+                dataTyoe: 'json',
+                success: callback
+            });
+        }
+
+        AJAXrequest('form.php', MessageEvent, function(data){
+            console.log("success");
+        })*/
+    </script>
+</body>
+</html>

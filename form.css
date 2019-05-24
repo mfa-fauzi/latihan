@@ -1,0 +1,64 @@
+/* Start Input */
+
+#content input {
+    padding: 5px 0;
+    margin-bottom: 30px;
+    
+}
+
+#content label {
+    font-family: 'Century Gothic Regular';
+}
+#content textarea {
+    height: 80px;
+    padding: 10px 0;
+    margin-bottom: 40px;
+}
+#content input,
+#content textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #0045a6;
+}
+#content textarea {
+    margin-bottom: 20px;
+}
+#content input[type="submit"] {
+    border-bottom: none;
+    cursor: pointer;
+    background: #0045a6;
+    color: #fff;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+#content form div {
+    position: relative;
+}
+#content form div label {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    color: rgb(92, 92, 92);
+    transition: .5s;
+    pointer-events: none;
+}
+#content input:focus ~ label,
+#content textarea:focus ~ label,
+#content input:valid ~ label,
+#content textarea:valid ~ label {
+    top: -12px;
+    left: 0;
+    color: #0045a6;
+    font-size: 12px;
+    font-weight: bold;
+}
+#content input:focus,
+#content textarea:focus,
+#content input:valid,
+#content textarea:valid {
+    border-bottom: 1px solid #0045a6;
+}
